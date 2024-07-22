@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<section>
+    <h1>this is home page make a donation</h1>
+     
+     
+     <div class="form-group mt-4">
+    <label for="donation">donate</label>
+    <input name="donation" type="text" class="form-control" id="amount" placeholder="enter amount">
+  </div>
+      <div class="container mt-5">
+    <button onclick="paymentstart()" class="btn btn-success btn-sm">PAY</button>
+  </div>
+     
+     
+</section>
+	<script th:src="@{js/script.js}"></script>
+</body>
+</html>

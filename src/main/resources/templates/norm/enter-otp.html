@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="norm/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<section>
+    
+    <h1>this is otp page</h1>
+  
+     <form th:action="verify">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter otp</label>
+    <input name="otp2" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter otp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your otp with anyone else.</small>
+                 
+           <button type="submit" class="btn btn-success">submit</button>
+           
+  </div>
+ 
+ 
+ 
+  </form>
+  
+  </section>  

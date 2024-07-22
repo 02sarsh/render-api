@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<section>
+    <h1>this is conatct detail page</h1>
+    
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">name</th>
+      <th scope="col">phone</th>
+      <th scope="col">email</th>
+      <th scope="col">secondname</th>
+      <th scope="col">work</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    
+     <td>
+    <img alt="profile pic" th:src="@{'/images/' + ${c.profileimage}}" width="100" height="100"/>
+</td>
+      <th scope="row">1</th>
+      <td th:text="${c.name}">Mark</td>
+     
+
+      <td th:text="${c.phone}">Mark</td>
+      
+      
+      <td th:text="${c.email}">
+     
+     </td>
+      <td>
+      <a th:href="@{'/deletecontact/' + ${c.cId}}" class="btn btn-danger btn-sm">delete</a>
+      <button class="btn btn-primary btn-sm">update</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+</section>
+	
+</body>
+</html>

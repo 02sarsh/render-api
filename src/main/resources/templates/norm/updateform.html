@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="norm/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<section>
+    
+    <h1>this is update-contact page</h1>
+    
+      <form  th:action="@{'/update-contact/' + ${contact.cId}}" enctype="multipart/form-data" method="post">
+ 
+ <div class="form-group">
+    <label for="exampleInputEmail1">name</label>
+    <input th:value="${contact.name}" type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">2nd-name</label>
+    <input th:value="${contact.secondname}" type="text" name="secondname" class="form-control" id="mytextarea" placeholder="2name">
+  </div>
+ 
+ <div class="form-group">
+    <label for="exampleInputEmail1">work</label>
+    <input th:value="${contact.work}"type="text" name="work" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter work">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">phone</label>
+    <input th:value="${contact.phone}" type="text" name="phone" class="form-control" id="exampleInputPassword1" placeholder="Phone">
+  </div>
+ 
+ <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input th:value="${contact.email}" type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  
+  <img alt="profile pic" th:src="@{'/images/' + ${contact.profileimage}}" width="100" height="100"/><span>previous image</span>
+  
+  <div class="form-group">
+    <label for="exampleFormControlFile1"></label>
+    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
+  
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+ 
+
+    
+    
+</form>
+</section>
+	
+</body>
+</html>
