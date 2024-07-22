@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/cloud-0.0.1-SNAPSHOT.jar cloud.jar
+COPY --from=build /target/c-oud-deploy-0.0.1-SNAPSHOT.jar cloud.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java","-jar","cloud.jar"]
