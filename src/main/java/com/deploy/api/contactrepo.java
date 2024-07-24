@@ -20,7 +20,7 @@ public interface contactrepo extends JpaRepository<contact,Integer>{
 	@Transactional
 	@Modifying
 	@Query(value = "delete from contact as c where c.cId = :cId")
-      public contact deletecontact(@Param("cId")int cId);
+      public void deletecontact(@Param("cId")int cId);
 	
 	public List<contact>findByNameContaining(String name);
 
