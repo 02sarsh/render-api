@@ -140,14 +140,14 @@ public class controller {
 	    byte[] bytes=file.getBytes();
 	    
 	    
-	    Path path=Paths.get(uploadDir+File.separator+file.getOriginalFilename());
+	   // Path path=Paths.get(uploadDir+File.separator+file.getOriginalFilename());
 	    
-	    Path path1= Files.write(path,bytes);
-	    System.out.println(path1);
+	   // Path path1= Files.write(path,bytes);
+	   // System.out.println(path1);
 		System.out.println(User);
 		System.out.println(Contact);
 		
-		Contact.setProfileimage(file.getOriginalFilename());
+	//	Contact.setProfileimage(file.getOriginalFilename());
 		User.getContacts().add(Contact);
 		
 		userrepo.save(User);
