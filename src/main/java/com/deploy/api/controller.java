@@ -3,6 +3,7 @@ package com.deploy.api;
 import java.util.Random;
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpHeaders;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,9 +15,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.apache.tomcat.util.file.ConfigurationSource.Resource;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -106,15 +109,16 @@ public class controller {
 	}
 	
 	@PostMapping("/logindata")
-	public String logindata(@RequestParam String email,HttpSession session) {
+	public String logindata(@RequestParam String email,HttpSession session,@RequestParam String password) {
 		
 		System.out.println(email);
 		user User=userrepo.getuserbyemail(email);
+		String pass=userrepo.getpassbyemail(email);
 		System.out.println(User);
 		
 		session.setAttribute("User", User);
 		
-		if(User!=null) {
+		if(User!=null && pass.equals(password)) {
 			return "logindata";
 		}
 		
@@ -139,6 +143,7 @@ public class controller {
 	    
 	    byte[] bytes=file.getBytes();
 	    
+	    String name=file.getName();
 	    
 	   // Path path=Paths.get(uploadDir+File.separator+file.getOriginalFilename());
 	    
@@ -147,12 +152,27 @@ public class controller {
 		System.out.println(User);
 		System.out.println(Contact);
 		
-	//	Contact.setProfileimage(file.getOriginalFilename());
+		Contact.setProfileimage(file.getOriginalFilename());
+		Contact.setData(bytes);
 		User.getContacts().add(Contact);
 		
 		userrepo.save(User);
 		return "norm/addcontact";
 	}
+	
+	
+	@GetMapping("/images/{cId}")
+	public ResponseEntity<ByteArrayResource> retrieve(@PathVariable("cId")Integer cId){
+		
+		var image=conRepo.getdatabycid(cId);
+		var body=new ByteArrayResource(image);
+		
+		System.out.println(body);
+		System.out.println(cId);
+		return ResponseEntity.ok()
+				             .header(org.springframework.http.HttpHeaders.CONTENT_TYPE,"image/png")
+				             .body(body);
+		}
 	
 	
 	@GetMapping("/showcontact/{page}")

@@ -22,6 +22,11 @@ public interface contactrepo extends JpaRepository<contact,Integer>{
 	@Query(value = "delete from contact as c where c.cId = :cId")
       public void deletecontact(@Param("cId")int cId);
 	
+	
+	@Query("select data from contact c where c.cId = :cId")
+	public byte[] getdatabycid(@Param("cId")int cId);
+	
+	
 	public List<contact>findByNameContaining(String name);
 
 	

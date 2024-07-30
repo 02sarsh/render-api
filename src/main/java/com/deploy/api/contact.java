@@ -25,6 +25,8 @@ public class contact {
 	
 	private String profileimage;
 	
+	public byte[] data;
+	
 	@Column(length = 5000)
 	private String description;
 	
@@ -87,6 +89,12 @@ public class contact {
 	}
 	public void setProfileimage(String profileimage) {
 		this.profileimage = profileimage;
+	}
+	public byte[] getData() {
+		return data;
+	}
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 	
 	
